@@ -1,0 +1,90 @@
+Certainly! Here's a guide on how to perform various cell formatting tasks using the `openpyxl` library in Python:
+
+1. Merging and centering cells:
+```python
+from openpyxl.styles import Alignment
+
+# Merge cells
+ws.merge_cells('A1:C1')
+
+# Center the merged cell
+ws['A1'].alignment = Alignment(horizontal='center', vertical='center')
+```
+
+2. Bolding cells:
+```python
+from openpyxl.styles import Font
+
+# Bold the cell
+ws['A1'].font = Font(bold=True)
+```
+
+3. Highlighting/coloring cells:
+```python
+from openpyxl.styles import PatternFill
+
+# Highlight the cell with a color
+ws['A1'].fill = PatternFill(color='FFFF00', end_color='FFFF00', fill_type='solid')
+```
+
+4. Changing the width and height of cells:
+```python
+# Set the column width (in characters)
+ws.column_dimensions['A'].width = 20
+
+# Set the row height (in points)
+ws.row_dimensions[1].height = 30
+```
+
+5. Changing the font size:
+```python
+from openpyxl.styles import Font
+
+# Change the font size
+ws['A1'].font = Font(size=14)
+```
+
+6. Other cell formatting codes:
+   - Italic:
+     ```python
+     ws['A1'].font = Font(italic=True)
+     ```
+   - Underline:
+     ```python
+     ws['A1'].font = Font(underline='single')
+     ```
+   - Font color:
+     ```python
+     ws['A1'].font = Font(color='FF0000')
+     ```
+   - Border:
+     ```python
+     from openpyxl.styles import Border, Side
+     
+     border = Border(left=Side(border_style='thin', color='000000'),
+                     right=Side(border_style='thin', color='000000'),
+                     top=Side(border_style='thin', color='000000'),
+                     bottom=Side(border_style='thin', color='000000'))
+     
+     ws['A1'].border = border
+     ```
+   - Number format:
+     ```python
+     ws['A1'].number_format = '#,##0.00'
+     ```
+
+Remember to save the workbook after making the changes:
+```python
+wb.save('formatted_workbook.xlsx')
+```
+
+7.
+import openpyxl
+
+workbook = openpyxl.load_workbook('example.xlsx')
+worksheet = workbook['Sheet1'] 
+cell = worksheet['A1'] 
+
+cell.alignment = openpyxl.styles.Alignment(wrap_text=True)
+
+workbook.save('example.xlsx')
